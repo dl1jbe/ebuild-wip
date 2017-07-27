@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/bacula/${MY_P}.tar.gz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="acl bacula-clientonly bacula-nodir bacula-nosd examples ipv6 libressl logwatch mysql postgres qt4 readline +sqlite ssl static tcpd vim-syntax X"
+IUSE="bacula-clientonly bacula-nodir bacula-nosd examples ipv6 libressl logwatch mysql postgres qt4 readline +sqlite ssl static tcpd vim-syntax X"
 
 DEPEND="
 	dev-libs/gmp:0
@@ -33,7 +33,7 @@ DEPEND="
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	readline? ( sys-libs/readline:0 )
 	static? (
-		acl? ( virtual/acl[static-libs] )
+		virtual/acl[static-libs]
 		sys-libs/zlib[static-libs]
 		dev-libs/lzo[static-libs]
 		sys-libs/ncurses:=[static-libs]
@@ -43,7 +43,7 @@ DEPEND="
 		)
 	)
 	!static? (
-		acl? ( virtual/acl )
+		virtual/acl
 		sys-libs/zlib
 		dev-libs/lzo
 		sys-libs/ncurses:=
@@ -194,10 +194,10 @@ src_configure() {
 		$(use_with readline readline /usr) \
 		$(use_with ssl openssl) \
 		$(use_enable ipv6) \
-		$(use_enable acl) \
 		$(use_with tcpd tcp-wrappers)"
 
 	econf \
+	    --enable-acl \
 		--libdir=/usr/$(get_libdir) \
 		--docdir=/usr/share/doc/${PF} \
 		--htmldir=/usr/share/doc/${PF}/html \
