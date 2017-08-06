@@ -176,9 +176,15 @@ src_configure() {
 		# bug #311099
 		# database support needed by dir-only *and* sd-only
 		# build as well (for building bscan, btape, etc.)
-		myconf="${myconf} \
-			--with-${mydbtype} \
+		myconf="${myconf}"
+			--with-${mydbtype}"
+		if use mysql; then
+		    myconf="${myconf} \
+			--disable-batch-insert"
+		else
+		    myconf="${myconf} \
 			--enable-batch-insert"
+		fi
 	fi
 
 	# do not build bat if 'static' clientonly
