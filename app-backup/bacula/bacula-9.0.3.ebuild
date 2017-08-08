@@ -124,7 +124,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/5.2.3/${PN}-5.2.3-as-needed.patch
 
 	# bug #311161
-	epatch "${FILESDIR}"/9.0.2/${P}-lib-search-path.patch
+	epatch "${FILESDIR}"/9.0.2/${PN}-9.0.2-lib-search-path.patch
 
 	# bat needs to respect LDFLAGS
 	epatch "${FILESDIR}"/5.2.3/${PN}-5.2.3-ldflags.patch
@@ -132,7 +132,7 @@ src_prepare() {
 	# bug #328701
 	epatch "${FILESDIR}"/5.2.3/${PN}-5.2.3-openssl-1.patch
 
-	epatch "${FILESDIR}"/9.0.2/${P}-fix-static.patch
+	epatch "${FILESDIR}"/9.0.2/${PN}-9.0.2-fix-static.patch
 
 	# fix soname in libbaccat.so bug #602952
 	epatch "${FILESDIR}/bacula-fix-sonames.patch"
