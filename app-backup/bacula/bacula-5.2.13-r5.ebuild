@@ -66,7 +66,7 @@ RDEPEND="${DEPEND}
 	)
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )"
 
-REQUIRED_USE="|| ( ^^ ( mysql postgres sqlite ) bacula-clientonly )
+REQUIRED_USE="!bacula-clientonly? ( ^^ ( mysql postgres sqlite ) )
 				static? ( bacula-clientonly )
 				python? ( ${PYTHON_REQUIRED_USE} )"
 
